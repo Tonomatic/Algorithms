@@ -11,6 +11,8 @@
 
 var isValid = function(s) {
     let stack = [];
+    if(s.length % 2 !== 0) return false;
+
     let pairs = { '(': ')', '[': ']', '{': '}'}
     for(let i = 0; i < s.length; i++) {
         let char = s[i]; // {
