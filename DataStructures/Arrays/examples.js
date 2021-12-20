@@ -11,7 +11,7 @@ var construct2DArray = function(original, m, n) {
     //if m * n is greater than the number of elements in the original, return [];
     let output = [];
 
-    if((m*n) < original.length) return output;
+    if((m*n) !== original.length) return output;
     let counter = 0;
 
     for(let i = 0; i < m; i++) {
