@@ -13,4 +13,24 @@ var maxSubArray = function(nums) {
     }
     return maxN;
 };
- 
+
+
+/*
+Write a function fib that takes in a number argument, n, and returns the n-th number of the Fibonacci sequence.
+*/
+
+
+//this problem, solves the fib sequence by adding an object, that saves values that
+//we iterate on
+const fib = function(num, obj = {}) {
+
+    if(num === 1) return num;
+    if(num === 2) return num;
+
+    if(obj[num]) return obj[num]
+
+    //remember to pass in the obj. You won't get an error, but the obj wont change
+    obj[num] = fib(num-1, obj) + fib(num-2, obj);
+
+    return obj[num]
+}
