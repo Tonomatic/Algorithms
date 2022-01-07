@@ -34,3 +34,40 @@ const fib = function(num, obj = {}) {
 
     return obj[num]
 }
+
+/*
+Given an array of numbers and a target number, return all possible ways you can sum up the numbers to equat the target number.
+You can use the same individual numbers in array more then once.
+
+EX: n = 4, arr = [1, 2, 3]      return 4
+1. 1 + 1 + 1 +1
+2. 1 + 3
+3. 2 + 2
+4. 1 + 1 + 2
+
+*/
+
+
+const coinChange = function(target, coins, i = 0) {
+    //We want to recursively call the function and subtract from target at coins[i];
+
+    let coin = coins[i]; // 1
+    let total = 0;
+    //everytime our target is equal to 0, we increase the count by one
+    if(target === 0) return 1;
+
+    for(let qty = 0; (qty * coin) <= target; qty++) {
+        let remainder = target - (qty * coin) // at 0, we recursively go to remainder being the same. At 1, we recursively call the remainder being 3
+
+        total += coinChange(remainder, coins, (i+1));
+
+    }
+
+
+
+
+    return total;
+
+}
+
+console.log(coinChange(4, [1, 2, 3]))
