@@ -71,3 +71,23 @@ const coinChange = function(target, coins, i = 0) {
 }
 
 console.log(coinChange(4, [1, 2, 3]))
+
+
+/*
+Count Paths. Write a function that takes in a grid as an argument. In the grid, 'X' represents walls and 'O' represents
+open spaces. You may only move down or to the right and cannot pass through walls. The function should return the number of
+possible ways to travel to the end
+
+ */
+
+const countPaths = (grid, i = 0, j = 0, memo = {}) => {
+    let key = i + ',' + j;
+
+    if(key in memo) return memo[key];
+
+    if(i === grid.length || j === grid[0].length || grid[i][j] === 'X') return 0;
+    if(i === grid.length -1 && j === grid[0].length - 1) return 1;
+
+    memo[key] = countPaths(grid, i+1, j, memo) + countPaths(grid, i, j+1, memo);
+    return memo[key]
+}
